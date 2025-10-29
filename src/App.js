@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, Settings, Play, Download, Image as ImageIcon, AlertCircle } from 'lucide-react';
+import { Upload, Settings, Play, Image as ImageIcon, AlertCircle } from 'lucide-react';
 
 const FrameShiftApp = () => {
   const [image1, setImage1] = useState(null);
