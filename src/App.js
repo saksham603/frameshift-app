@@ -50,7 +50,7 @@ const FrameShiftApp = () => {
     formData.append('config', JSON.stringify(config));
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || '/api/analyze';
+      const API_URL = 'https://frameshift-api.onrender.com/analyze';
       
       const response = await fetch(API_URL, {
         method: 'POST',
