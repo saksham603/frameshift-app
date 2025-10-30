@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, Settings, Play, Image as ImageIcon, AlertCircle } from 'lucide-react';
+import { Upload, Settings, Play, AlertCircle } from 'lucide-react';
 
 const FrameShiftApp = () => {
   const [image1, setImage1] = useState(null);
@@ -50,7 +50,6 @@ const FrameShiftApp = () => {
     formData.append('config', JSON.stringify(config));
 
     try {
-      // Replace with your actual API endpoint
       const API_URL = process.env.REACT_APP_API_URL || '/api/analyze';
       
       const response = await fetch(API_URL, {
@@ -91,7 +90,6 @@ const FrameShiftApp = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Header */}
       <header className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -107,7 +105,6 @@ const FrameShiftApp = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Error Message */}
         {error && (
           <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4 flex items-center">
             <AlertCircle className="text-red-600 mr-3" size={20} />
@@ -116,9 +113,7 @@ const FrameShiftApp = () => {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Image Upload */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Image Uploads */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                 <Upload className="mr-2" size={24} />
@@ -126,7 +121,6 @@ const FrameShiftApp = () => {
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Image 1 Upload */}
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-blue-500 transition-colors">
                   <label className="cursor-pointer block">
                     <input
@@ -142,7 +136,9 @@ const FrameShiftApp = () => {
                       </div>
                     ) : (
                       <div className="flex flex-col items-center justify-center h-48 text-gray-400">
-                        <ImageIcon size={48} />
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                         <p className="mt-2 text-sm font-medium">Upload Image 1 (Before)</p>
                         <p className="text-xs mt-1">Click or drag to upload</p>
                       </div>
@@ -150,7 +146,6 @@ const FrameShiftApp = () => {
                   </label>
                 </div>
 
-                {/* Image 2 Upload */}
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-blue-500 transition-colors">
                   <label className="cursor-pointer block">
                     <input
@@ -166,7 +161,9 @@ const FrameShiftApp = () => {
                       </div>
                     ) : (
                       <div className="flex flex-col items-center justify-center h-48 text-gray-400">
-                        <ImageIcon size={48} />
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                         <p className="mt-2 text-sm font-medium">Upload Image 2 (After)</p>
                         <p className="text-xs mt-1">Click or drag to upload</p>
                       </div>
@@ -176,7 +173,6 @@ const FrameShiftApp = () => {
               </div>
             </div>
 
-            {/* Results Display */}
             {results && (
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-4">Analysis Results</h2>
@@ -192,7 +188,6 @@ const FrameShiftApp = () => {
                   </div>
                 </div>
 
-                {/* Result Images */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {results.difference_map && (
                     <div>
@@ -216,7 +211,6 @@ const FrameShiftApp = () => {
                   )}
                 </div>
 
-                {/* Change Details */}
                 {results.changes && results.changes.length > 0 && (
                   <div className="mt-6">
                     <h3 className="font-semibold text-gray-800 mb-3">Top Changes:</h3>
@@ -237,9 +231,7 @@ const FrameShiftApp = () => {
             )}
           </div>
 
-          {/* Right Column - Configuration */}
           <div className="space-y-6">
-            {/* Configuration Panel */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
                 <Settings className="mr-2" size={24} />
@@ -271,7 +263,6 @@ const FrameShiftApp = () => {
                   description="Ignore text labels and overlays"
                 />
 
-                {/* Sensitivity Slider */}
                 <div className="p-3 bg-gray-50 rounded-lg">
                   <label className="font-medium text-gray-700 block mb-2">
                     Sensitivity: {config.sensitivity.toFixed(2)}
@@ -293,7 +284,6 @@ const FrameShiftApp = () => {
               </div>
             </div>
 
-            {/* Analyze Button */}
             <button
               onClick={handleAnalyze}
               disabled={!image1 || !image2 || loading}
@@ -318,7 +308,6 @@ const FrameShiftApp = () => {
               )}
             </button>
 
-            {/* Use Case Guide */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
               <h3 className="font-bold text-gray-800 mb-3">💡 Quick Guide</h3>
               <div className="space-y-3 text-sm text-gray-700">
@@ -340,7 +329,6 @@ const FrameShiftApp = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="bg-white border-t mt-12 py-6">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-600 text-sm">
           <p>FrameShift v1.1 - Visual Comparison Engine for Time-Series Images</p>
